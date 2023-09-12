@@ -1,0 +1,129 @@
+resource: users # resource name that will be used in the url path for the api
+seed: 5 # number of records to generate when the server starts
+properties:
+  firstName:
+    type: person.firstName # faker-js method name
+  lastName:
+    type: person.lastName
+  email:
+    type: internet.email
+  phone:
+    type: phone.number
+  zodiac:
+    type: person.zodiacSign
+  avatar:
+    type: image.avatar
+  address:
+    type: compose # compose multiple faker-js methods together to create a single value
+    input:
+      - type: location.streetAddress
+        options:
+          useFullAddress: true
+      - ', '
+      - type: location.city
+      - ', '
+      - type: location.state
+        options:
+          abbreviated: true
+  mobileDeviceOSType:
+    type: helpers.arrayElement
+    input: # array of possible values only one will be selected
+      - iOS
+      - Android
+      - Windows
+      - Blackberry
+      - Symbian
+      - Other
+  pets:
+    type: helpers.arrayElements
+    input: # array of possible values, a random number of values will be selected between min and max
+      - cat
+      - dog
+      - fish
+      - bird
+      - rabbit
+    options:
+      min: 1
+      max: 3
+  employeeNumber:
+    type: helpers.fromRegExp
+    input: '[A-Z]{2}-[0-9]{6}' # regular expression
+  birthDate:
+    type: date.birthdate
+  favoriteColor:
+    type: color.human
+  todoList:
+    type: json # json object
+    input: |
+      {
+          "foo": "bar"
+      }
+  workExperience:
+    type: json
+    input:
+      company: 'Acme Inc.'
+      position: 'Software Engineer'
+      startDate: '2015-01-01'
+      endDate: '2017-01-01'
+  websites:
+    type: array
+    count: 3
+    items:
+      properties:
+        url:
+          type: internet.url
+        name:
+          type: company.name
+  vehicles:
+    type: array
+    count: 2
+    items:
+      type: compose
+      input:
+        - type: helpers.fromRegExp
+          input: '20[0-2]{2}'
+        - ' - '
+        - type: vehicle.manufacturer
+        - ' '
+        - type: vehicle.model
+  addressHistory:
+    type: array
+    items:
+      - properties:
+          home:
+            type: location.streetAddress
+      - count: 2
+        properties:
+          work:
+            type: location.streetAddress
+      - type: json
+        input: |
+          {
+            "temporary": "Some temporary address"
+          }
+  wordList:
+    type: array
+    count: 5
+    items:
+      type: lorem.words
+      options: 5 # word count
+  notes:
+    type: lorem.paragraphs
+    input: 2 # number of paragraphs
+  randomPassword:
+    type: eval
+    input: |
+      (function() {
+        const length = 16;
+        const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+
+        let retVal = '';
+        for (let i = 0, n = charset.length; i < length; ++i) {
+          retVal += charset.charAt(Math.floor(Math.random() * n));
+        }
+
+        return retVal;
+      })();
+  randomNumbers:
+    type: eval
+    input: 'Array.from({length: 5}, () => Math.floor(Math.random() * 100))'

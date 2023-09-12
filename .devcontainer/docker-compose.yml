@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  app:
+    container_name: app
+    image: mcr.microsoft.com/devcontainers/javascript-node:1-16-bullseye
+    restart: always
+    volumes:
+      - ../..:/workspaces:cached
+    command: sleep infinity
+    ports:
+      - 3000:3000
+    networks:
+      - localnet
+    depends_on:
+      - localnpm
+  localnpm:
+    image: verdaccio/verdaccio:latest
+    container_name: localnpm
+    restart: always
+    ports:
+      - 4873:4873
+    networks:
+      - localnet
+
+networks:
+  localnet:
+    driver: bridge

@@ -1,0 +1,58 @@
+{
+  "name": "mock-yaml-server",
+  "version": "1.0.0",
+  "author": "Abhijit Darji",
+  "description": "YAML based mock REST API server",
+  "main": "src/server.mjs",
+  "bin": "src/bin.mjs",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/abhijitdarji/mock-yaml-server.git"
+  },
+  "homepage": "https://github.com/abhijitdarji/mock-yaml-server",
+  "type": "module",
+  "exports": {
+    ".": "./src/server.mjs"
+  },
+  "scripts": {
+    "start": "node src/server.mjs -f ./resources",
+    "watch": "node src/watcher.mjs -f ./resources",
+    "publish:local": "npm publish --registry http://localnpm:4873",
+    "unpublish:local": "npm unpublish --force --registry http://localnpm:4873"
+  },
+  "keywords": [
+    "mock",
+    "yaml",
+    "server",
+    "fake",
+    "REST",
+    "api",
+    "test",
+    "testing",
+    "swagger",
+    "openapi",
+    "data",
+    "dummy",
+    "faker-js"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "@faker-js/faker": "8.0.2",
+    "chalk": "5.3.0",
+    "chokidar": "3.5.3",
+    "cors": "2.8.5",
+    "express": "4.18.2",
+    "genson-js": "0.0.8",
+    "joi": "17.10.1",
+    "js-yaml": "4.1.0",
+    "lodash": "4.17.21",
+    "lowdb": "6.0.1",
+    "pluralize": "8.0.0",
+    "swagger-ui-express": "5.0.0",
+    "uuid": "9.0.0",
+    "yargs": "17.7.2"
+  }
+}
