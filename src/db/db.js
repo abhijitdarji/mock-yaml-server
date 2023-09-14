@@ -1,8 +1,8 @@
 import { join } from 'path'
 import { JSONFileSync } from 'lowdb/node'
-import { generateMockData } from '../api/mock-data.mjs'
+import { generateMockData } from '../api/mock-data.js'
 import lodash from 'lodash';
-import { LowSyncWithLodash } from './lowdb-lodash.mjs';
+import { LowSyncWithLodash } from './lowdb-lodash.js';
 import pluralize from 'pluralize';
 
 let db = null;

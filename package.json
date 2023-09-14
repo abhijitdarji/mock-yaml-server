@@ -1,10 +1,10 @@
 {
   "name": "mock-yaml-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Abhijit Darji",
   "description": "YAML based mock REST API server",
-  "main": "src/server.mjs",
-  "bin": "src/bin.mjs",
+  "main": "src/server.js",
+  "bin": "src/bin.js",
   "engines": {
     "node": ">=16.0.0"
   },
@@ -15,11 +15,11 @@
   "homepage": "https://github.com/abhijitdarji/mock-yaml-server",
   "type": "module",
   "exports": {
-    ".": "./src/server.mjs"
+    ".": "./src/server.js"
   },
   "scripts": {
-    "start": "node src/server.mjs -f ./resources",
-    "watch": "node src/watcher.mjs -f ./resources",
+    "start": "node src/server.js -f ./resources",
+    "watch": "node src/watcher.js -f ./resources",
     "publish:local": "npm publish --registry http://localnpm:4873",
     "unpublish:local": "npm unpublish --force --registry http://localnpm:4873"
   },

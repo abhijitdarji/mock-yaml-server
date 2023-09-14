@@ -1,6 +1,6 @@
-import { updateSwagger } from './swagger.mjs';
-import { generateMockData } from './mock-data.mjs';
-import { db } from '../db/db.mjs';
+import { updateSwagger } from './swagger.js';
+import { generateMockData } from './mock-data.js';
+import { db } from '../db/db.js';
 import pluralize from 'pluralize';
 
 const apiBase = '/api';

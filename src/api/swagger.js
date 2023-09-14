@@ -1,7 +1,7 @@
 import { writeFileSync, readFileSync } from 'fs';
 import { createSchema } from 'genson-js';
 import { serveFiles, setup } from 'swagger-ui-express';
-import { getConfig } from '../config.mjs';
+import { getConfig } from '../config.js';
 import { join } from 'path';
 
 const doc = {

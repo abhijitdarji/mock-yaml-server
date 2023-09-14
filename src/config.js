@@ -1,4 +1,4 @@
-import { __dirname } from "./utils.mjs";
+import { __dirname } from "./utils.js";
 
 const defaultConfig = {
     port: 3000,

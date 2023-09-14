@@ -2,9 +2,9 @@ import { watch } from 'chokidar';
 import yargs from 'yargs';
 import { isAbsolute, resolve, basename } from 'path';
 import { fork } from 'child_process';
-import { __dirname, logBanner } from './utils.mjs';
+import { __dirname, logBanner } from './utils.js';
 import chalk from 'chalk';
-import { cliOptions } from './config.mjs';
+import { cliOptions } from './config.js';
 
 const argv = yargs(process.argv.slice(2)).options(cliOptions)
     .alias('help', 'h')
@@ -42,7 +42,7 @@ const restartChildProcess = (isRestart) => {
         childProcess.kill();
     }
 
-    childProcess = fork(`${__dirname}/server.mjs`, process.argv.slice(2),
+    childProcess = fork(`${__dirname}/server.js`, process.argv.slice(2),
         {
             stdio: 'inherit',
             env: {
