@@ -22,10 +22,11 @@ CLI options:
 ```bash
 Usage: mock-yaml-server [options]
 Options:
-  -h, --help     Show help                                             [boolean]
-      --version  Show version number                                   [boolean]
-  -p, --port     Port number                                     [default: 3000]
-  -f, --folder   Folder to watch                  [default: "current directory"]
+  -h, --help        Show help                                    [boolean]
+      --version     Show version number                          [boolean]
+  -p, --port        Port number                            [default: 3000]
+  -f, --folder      Folder to watch         [default: "current directory"]
+  -d, --dark-theme  Swagger UI dark theme        [boolean][default: false]
 ```
 
 ## Schema definition

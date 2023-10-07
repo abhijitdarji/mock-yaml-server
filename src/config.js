@@ -2,12 +2,14 @@ import { __dirname } from "./utils.js";
 
 const defaultConfig = {
     port: 3000,
-    watchDir: process.cwd()
+    watchDir: process.cwd(),
+    darkTheme: false
 };
 
 let _config = {
     port: defaultConfig.port,
-    watchDir: defaultConfig.watchDir
+    watchDir: defaultConfig.watchDir,
+    darkTheme: defaultConfig.darkTheme
 };
 
 const cliOptions = {
@@ -20,6 +22,12 @@ const cliOptions = {
         alias: 'f',
         describe: 'Folder to watch',
         default: defaultConfig.watchDir,
+    },
+    "dark-theme": {
+        alias: 'd',
+        describe: 'Swagger UI dark theme',
+        default: defaultConfig.darkTheme,
+        boolean: true
     }
 };
 

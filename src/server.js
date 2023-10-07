@@ -3,7 +3,7 @@ import cors from 'cors'
 import { registerAPIRoutes, registerEchoRoute, registerGetAllDBRoute } from './api/routes.js'
 import yargs from 'yargs'
 import { registerSwaggerRoutes } from './api/swagger.js'
-import { resolve } from 'path'
+import { resolve, join } from 'path'
 import { setConfig, cliOptions } from './config.js'
 import { readdirSync, readFileSync } from 'fs'
 import { load } from 'js-yaml'
@@ -27,7 +27,8 @@ const watchDir = resolve(argv.folder);
 
 setConfig({
     port: argv.port,
-    watchDir: watchDir
+    watchDir: watchDir,
+    darkTheme: argv['dark-theme']
 })
 
 const PORT = argv.port;
@@ -39,6 +40,7 @@ app.get('/', (req, res) => {
 });
 
 app.use(json());
+app.use('/assets', express.static(join(__dirname, 'assets')))
 
 registerEchoRoute(router);
 registerGetAllDBRoute(router);

@@ -169,6 +169,7 @@ const registerSwaggerRoutes = (router) => {
         swaggerOptions: {
             url: "/api-docs/swagger.json",
         },
+        ...getConfig().darkTheme ? { customCssUrl: '/assets/dark-theme.css' } : {}
     }
     router.get("/api-docs/swagger.json", async (req, res) => {
         const swaggerDocument = JSON.parse(readFileSync(outputFile, 'utf8'));
