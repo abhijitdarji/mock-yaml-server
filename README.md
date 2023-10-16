@@ -27,10 +27,16 @@ Options:
   -p, --port        Port number                            [default: 3000]
   -f, --folder      Folder to watch         [default: "current directory"]
   -d, --dark-theme  Swagger UI dark theme        [boolean][default: false]
+  -s, --server      Swagger UI server name            [default: localhost]
 ```
 
 ## Schema definition
 
+
+### File names
+
+The File should be named `*.mock.yaml` or `*.mock.yml`
+Use VSCode extension [mock-yaml-extension](https://marketplace.visualstudio.com/items?itemName=adarji.mock-yaml-extension) for schema validation and auto complete
 
 ### Definition
 
@@ -61,7 +67,7 @@ properties: # list of properties to generate
     items: # optional schema definition for array type
 ```
 
-### Sample schema file named `users.yaml`:
+### Sample schema file named `users.mock.yaml`:
 
 ```yaml
 resource: users # resource name that will be used in the url path for the api
@@ -135,23 +141,23 @@ properties:
     type: array
     count: 3
     items:
-      properties:
-        url:
-          type: internet.url
-        name:
-          type: company.name
+      - properties:
+          url:
+            type: internet.url
+          name:
+            type: company.name
   vehicles:
     type: array
     count: 2
     items:
-      type: compose
-      input:
-        - type: helpers.fromRegExp
-          input: '20[0-2]{2}'
-        - ' - '
-        - type: vehicle.manufacturer
-        - ' '
-        - type: vehicle.model
+      - type: compose
+        input:
+          - type: helpers.fromRegExp
+            input: '20[0-2]{2}'
+          - ' - '
+          - type: vehicle.manufacturer
+          - ' '
+          - type: vehicle.model
   addressHistory:
     type: array
     items:
@@ -171,8 +177,8 @@ properties:
     type: array
     count: 5
     items:
-      type: lorem.words
-      options: 5 # word count
+      - type: lorem.words
+        options: 5 # word count
   notes:
     type: lorem.paragraphs
     input: 2 # number of paragraphs
@@ -276,11 +282,11 @@ websites:
     type: array
     count: 3
     items:
-      properties:
-        url:
-          type: internet.url
-        name:
-          type: company.name
+      - properties:
+          url:
+            type: internet.url
+          name:
+            type: company.name
 ```
 or generate array of strings
 
@@ -289,8 +295,8 @@ wordList:
     type: array
     count: 5
     items:
-      type: lorem.words
-      options: 5 # word count
+      - type: lorem.words
+        options: 5 # word count
 ```
 or control each item in array
 

@@ -69,23 +69,23 @@ properties:
     type: array
     count: 3
     items:
-      properties:
-        url:
-          type: internet.url
-        name:
-          type: company.name
+      - properties:
+          url:
+            type: internet.url
+          name:
+            type: company.name
   vehicles:
     type: array
     count: 2
     items:
-      type: compose
-      input:
-        - type: helpers.fromRegExp
-          input: '20[0-2]{2}'
-        - ' - '
-        - type: vehicle.manufacturer
-        - ' '
-        - type: vehicle.model
+      - type: compose
+        input:
+          - type: helpers.fromRegExp
+            input: '20[0-2]{2}'
+          - ' - '
+          - type: vehicle.manufacturer
+          - ' '
+          - type: vehicle.model
   addressHistory:
     type: array
     items:
@@ -105,8 +105,8 @@ properties:
     type: array
     count: 5
     items:
-      type: lorem.words
-      options: 5 # word count
+      - type: lorem.words
+        options: 5 # word count
   notes:
     type: lorem.paragraphs
     input: 2 # number of paragraphs

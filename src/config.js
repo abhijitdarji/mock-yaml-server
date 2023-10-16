@@ -3,13 +3,15 @@ import { __dirname } from "./utils.js";
 const defaultConfig = {
     port: 3000,
     watchDir: process.cwd(),
-    darkTheme: false
+    darkTheme: false,
+    server: 'localhost'
 };
 
 let _config = {
     port: defaultConfig.port,
     watchDir: defaultConfig.watchDir,
-    darkTheme: defaultConfig.darkTheme
+    darkTheme: defaultConfig.darkTheme,
+    server: defaultConfig.server
 };
 
 const cliOptions = {
@@ -28,6 +30,11 @@ const cliOptions = {
         describe: 'Swagger UI dark theme',
         default: defaultConfig.darkTheme,
         boolean: true
+    },
+    server: {
+        alias: 's',
+        describe: 'Swagger UI server name',
+        default: defaultConfig.server
     }
 };
 

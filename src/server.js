@@ -28,7 +28,8 @@ const watchDir = resolve(argv.folder);
 setConfig({
     port: argv.port,
     watchDir: watchDir,
-    darkTheme: argv['dark-theme']
+    darkTheme: argv['dark-theme'],
+    server: argv.server
 })
 
 const PORT = argv.port;
@@ -49,7 +50,7 @@ let resourceCount = 0;
 
 const readFolder = (folderPath) => {
 
-    const files = readdirSync(folderPath).filter(file => file.endsWith('.yaml'));
+    const files = readdirSync(folderPath).filter(file => file.endsWith('.mock.yaml') || file.endsWith('.mock.yml'));
 
     if (!files.length) return false;
 

@@ -13,8 +13,7 @@ const doc = {
     },
     servers: [
         {
-            url: "/api/",
-            description: "localhost"
+            url: "/api/"
         }
     ],
     tags: [],
@@ -161,6 +160,8 @@ const updateSwagger = (router) => {
 const registerSwaggerRoutes = (router) => {
 
     const outputFile = join(getConfig().watchDir, 'swagger.json');
+
+    doc.servers[0].description = getConfig().server;
     // write swagger.json file
     writeFileSync(outputFile, JSON.stringify(doc, null, 2), { encoding: 'utf8' })
 
