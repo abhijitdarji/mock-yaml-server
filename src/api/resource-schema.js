@@ -9,7 +9,7 @@ const custom = Joi.extend({
         'faker.type': '{{#label}} must be a valid faker type'
     },
     validate(value, helpers) {
-        if (!['array', 'json', 'compose', 'eval'].includes(value) && !validateFakerType(value)) {
+        if (!['array', 'json', 'compose', 'eval', 'object'].includes(value) && !validateFakerType(value)) {
             return { value, errors: helpers.error('faker.type') };
         }
     }
@@ -22,6 +22,7 @@ const schema = custom.object({
     seed: custom.number().optional(),
     properties: custom.object().pattern(/^/, custom.object({
         type: custom.faker().required(),
+        properties: custom.object().optional(),
         input: custom.any().optional(),
         options: custom.object().optional(),
         items: custom.any().optional(),

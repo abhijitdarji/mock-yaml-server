@@ -127,3 +127,10 @@ properties:
   randomNumbers:
     type: eval
     input: 'Array.from({length: 5}, () => Math.floor(Math.random() * 100))'
+  company:
+    type: object
+    properties:
+      name:
+        type: company.name
+      buzz:
+        type: company.buzzVerb

@@ -8,5 +8,12 @@
 	"forwardPorts": [
 		"app:3000",
 		"localnpm:4873"
-	]
+	],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"adarji.mock-yaml-extension"
+			]
+		}
+	}
 }

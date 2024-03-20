@@ -61,6 +61,7 @@ cookies: # optional cookies to include in the response
 properties: # list of properties to generate
   <property name>:
     type: # faker-js method name or one of the following special types (compose, json, array, eval)
+    properties: # optional nested object definition
     input: # optional input for the faker-js method, required for compose, json, eval types
     options: # optional options for the faker-js method
     count: # optional number of items to generate for array type
@@ -199,6 +200,13 @@ properties:
   randomNumbers:
     type: eval
     input: 'Array.from({length: 5}, () => Math.floor(Math.random() * 100))'
+  company:
+    type: object
+    properties:
+      name:
+        type: company.name
+      buzz:
+        type: company.buzzVerb
 
 ```
 
@@ -209,6 +217,7 @@ properties:
 3. **json** - json object
 4. **array** - array of items
 5. **eval** - evaluate a javascript expression
+6. **object** - nested objects
 
 ### Get value from faker-js
 
@@ -342,6 +351,18 @@ or generate an array of random numbers
 randomNumbers:
     type: eval
     input: 'Array.from({length: 5}, () => Math.floor(Math.random() * 100))'
+```
+
+### Nested object
+
+```yaml
+company:
+  type: object
+  properties:
+    name:
+      type: company.name
+    buzz:
+      type: company.buzzVerb
 ```
 
 ## Dev Container

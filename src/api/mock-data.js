@@ -23,7 +23,7 @@ const generateMockData = (schema) => {
     const mockData = {};
 
     const generateValue = (property) => {
-        const { type, items, count, input, options } = property;
+        const { type, properties, items, count, input, options } = property;
 
         switch (type) {
             case 'array':
@@ -69,6 +69,12 @@ const generateMockData = (schema) => {
                 if (!input) return '';
 
                 return eval(input);
+
+            case 'object':
+                return Object.keys(properties).reduce((acc, propertyName) => {
+                    acc[propertyName] = generateValue(properties[propertyName]);
+                    return acc;
+                }, {});
 
             default:
                 return resolveFakerValue(type, input, options);

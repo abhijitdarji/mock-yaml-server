@@ -1,6 +1,6 @@
 {
   "name": "mock-yaml-server",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Abhijit Darji",
   "description": "YAML based mock REST API server",
   "main": "src/server.js",
