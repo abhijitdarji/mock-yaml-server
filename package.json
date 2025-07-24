@@ -1,12 +1,12 @@
 {
   "name": "mock-yaml-server",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "Abhijit Darji",
   "description": "YAML based mock REST API server",
   "main": "src/server.js",
   "bin": "src/bin.js",
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=22.0.0"
   },
   "repository": {
     "type": "git",
@@ -40,19 +40,19 @@
   ],
   "license": "ISC",
   "dependencies": {
-    "@faker-js/faker": "8.0.2",
-    "chalk": "5.3.0",
-    "chokidar": "3.5.3",
+    "@faker-js/faker": "9.9.0",
+    "chalk": "5.4.1",
+    "chokidar": "4.0.3",
     "cors": "2.8.5",
-    "express": "4.18.2",
+    "express": "5.1.0",
     "genson-js": "0.0.8",
-    "joi": "17.10.1",
+    "joi": "17.13.3",
     "js-yaml": "4.1.0",
     "lodash": "4.17.21",
-    "lowdb": "6.0.1",
+    "lowdb": "7.0.1",
     "pluralize": "8.0.0",
-    "swagger-ui-express": "5.0.0",
-    "uuid": "9.0.0",
-    "yargs": "17.7.2"
+    "swagger-ui-express": "5.0.1",
+    "uuid": "11.1.0",
+    "yargs": "18.0.0"
   }
 }

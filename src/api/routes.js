@@ -92,7 +92,7 @@ const registerAPIRoutes = (router, definition) => {
         res.send(data);
     });
 
-    // update an item by id
+    // replace an item by id
     router.put(pathId, (req, res) => {
 
         const data = db.getItemById(definition.resource, parseInt(req.params.id));
@@ -113,6 +113,29 @@ const registerAPIRoutes = (router, definition) => {
 
         res.send(updatedItem);
     });
+
+    // partially update an item by id (PATCH)
+    router.patch(pathId, (req, res) => {
+
+        const data = db.getItemById(definition.resource, parseInt(req.params.id));
+
+        setResponseHeaders(res, definition.headers);
+
+        if (!data) {
+            res.status(404);
+            res.send({ message: `No ${resource} found with id ${req.params.id}` });
+            return;
+        }
+
+        // Merge existing data with partial update
+        const updatedItem = { ...data, ...req.body, id: parseInt(req.params.id) };
+
+        db.updateItemById(definition.resource, parseInt(req.params.id), updatedItem);
+        db.write();
+
+        res.send(updatedItem);
+    });
+
 
     // delete an item by id
     router.delete(pathId, (req, res) => {
@@ -141,6 +164,7 @@ const registerAPIRoutes = (router, definition) => {
         methods: [
             { method: 'GET', example: example },
             { method: 'PUT', example: example },
+            { method: 'PATCH', example: example },
             { method: 'DELETE', example: example }
         ]
     });

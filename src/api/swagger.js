@@ -112,10 +112,11 @@ const updateSwagger = (router) => {
 
                     break;
                 case 'put':
+                case 'patch':
 
                     methodDesc.requestBody = {
                         description: `${route.resource} type object`,
-                        required: true,
+                        required: methodLower === 'put',
                         content: {
                             'application/json': {
                                 schema: createSchema(method.example.data),
